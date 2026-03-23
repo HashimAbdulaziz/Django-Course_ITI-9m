@@ -1,0 +1,123 @@
+{% extends 'navbar.html' %} 
+
+{% block content %}
+<h2>Manage Students</h2>
+
+<fieldset
+  style="
+    max-width: 400px;
+    padding: 15px;
+    margin-bottom: 30px;
+  "
+>
+  <legend>
+    <b>Add New Student</b>
+  </legend>
+  <form
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+    <p>
+      <label>Name:</label><br />
+      <input
+        type="text"
+        name="name"
+        required
+      />
+    </p>
+    <p>
+      <label>Age:</label><br />
+      <input
+        type="number"
+        name="age"
+        required
+      />
+    </p>
+    <p>
+      <label>Email:</label><br />
+      <input
+        type="email"
+        name="email"
+        required
+      />
+    </p>
+    <p>
+      <label>Image:</label><br />
+      <input
+        type="file"
+        name="image"
+      />
+    </p>
+
+    <button
+      type="submit"
+      style="
+        background: green;
+        color: white;
+        padding: 5px 10px;
+      "
+    >
+      Add Student
+    </button>
+  </form>
+</fieldset>
+
+<h3>Student List</h3>
+<table>
+
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for student in students %}
+    <tr>
+      <td>{{ student.id }}</td>
+      <td>
+        {% if student.image %}
+        <img
+          src="{{ student.image.url }}"
+          width="50"
+          height="50"
+          style="border-radius: 5px"
+        />
+        {% else %} No image {% endif %}
+      </td>
+      <td>{{ student.name }}</td>
+      <td>{{ student.age }}</td>
+      <td>{{ student.email }}</td>
+      <td>
+        <a
+          href="{% url 'delete_student' student.id %}"
+        >
+          <button
+            style="
+              color: red;
+              cursor: pointer;
+            "
+          >
+            Delete
+          </button>
+        </a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="6">
+        No students found!
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  
+</table>
+
+{% endblock %}

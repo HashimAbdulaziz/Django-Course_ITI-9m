@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>ITI School System</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      nav {
+        background-color: #f4f4f4;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+      nav a {
+        margin-right: 20px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+      }
+      nav a:hover {
+        color: blue;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 800px;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="{% url 'home' %}"
+        >Home</a
+      >
+      <a href="{% url 'student_page' %}"
+        >Students</a
+      >
+      <a href="{% url 'contact_us' %}"
+        >Contact Us</a
+      >
+    </nav>
+
+    {% block content %} {% endblock %}
+  </body>
+</html>

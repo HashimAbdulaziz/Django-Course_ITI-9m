@@ -1,0 +1,39 @@
+{% extends 'navbar.html' %} 
+{% block content %}
+<h2>Contact Us</h2>
+<form
+  method="POST"
+  style="max-width: 400px"
+>
+  {% csrf_token %}
+  <p>
+    <label>Email:</label><br />
+    <input
+      type="email"
+      name="email"
+      required
+      style="width: 100%"
+    />
+  </p>
+  <p>
+    <label>Message:</label><br />
+    <textarea
+      name="message"
+      rows="5"
+      required
+      style="width: 100%"
+    ></textarea>
+  </p>
+
+  <button
+    type="submit"
+    style="
+      background: blue;
+      color: white;
+      padding: 5px 15px;
+    "
+  >
+    Send Feedback
+  </button>
+</form>
+{% endblock %}

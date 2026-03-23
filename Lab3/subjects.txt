@@ -1,0 +1,6 @@
+12,lessonOfLife,0.0
+12,Python,99.99
+13,Python,33
+14,C++,40
+12,Ruby,88.99
+14,lessonOfLife,0.0
