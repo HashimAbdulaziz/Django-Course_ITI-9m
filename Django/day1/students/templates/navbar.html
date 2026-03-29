@@ -41,16 +41,21 @@
     </style>
   </head>
   <body>
-    <nav>
-      <a href="{% url 'home' %}"
-        >Home</a
-      >
-      <a href="{% url 'student_page' %}"
-        >Students</a
-      >
-      <a href="{% url 'contact_us' %}"
-        >Contact Us</a
-      >
+
+  <nav>
+    <a href="{% url 'home' %}">Home</a>
+
+    {% if user.is_authenticated %}
+      <a href="{% url 'student_page' %}">Students</a> <a href="{% url 'subjects' %}">Subjects</a>
+      <a href="{% url 'grades' %}">Grades</a>
+      <span style="margin-left: 20px;">Hello, {{ user.username }}!</span>
+      <a href="{% url 'logout' %}" style="color: red;">Logout</a>
+    {% else %}
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+
+    <a href="{% url 'contact_us' %}">Contact Us</a>
     </nav>
 
     {% block content %} {% endblock %}

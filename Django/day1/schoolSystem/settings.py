@@ -74,9 +74,13 @@ WSGI_APPLICATION = "schoolSystem.wsgi.application"
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'schoolsys_djangocourse_db',
+        'USER': 'django_user',
+        'PASSWORD': '123456789',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -118,3 +122,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 MEDIA_URL = '/images/'
 MEDIA_ROOT = BASE_DIR / 'static/images'
+
+
+LOGIN_REDIRECT_URL = 'student_page'
+LOGIN_URL = 'login'
+
+#Auth_USER_MODEL = 'the file you want to tell Django it's the ne Auth user'
