@@ -90,7 +90,7 @@ def getAvgGrades():
 
         id, subName, grade = line.strip().split(",")
 
-        if int(id.strip()) == studentId:
+        if int(id.strip()) == studentId:1
             total += float(grade.strip())
             count += 1
 
